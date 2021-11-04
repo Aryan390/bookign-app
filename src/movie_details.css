@@ -99,6 +99,9 @@ visibility: visible;
   margin-left: "33%";
   margin-top: "9%";
 }
+.card .feedback_p{
+  color:black;
+}
 @media only screen and (max-width: 600px) {
   .viedo {
     margin-left: auto;

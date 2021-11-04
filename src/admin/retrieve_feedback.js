@@ -20,83 +20,95 @@ export const Retrievefeedback = () => {
             });
         });
     }, [])
+
+    const handleMenu = (e) => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('sidebar_visible');
+        document.getElementById('menu').classList.toggle('hide');
+    }
+    console.log(data);
+
     return (
-        <div className="wrapper ">
-            <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
-            <div className="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-                <div className="logo"><a href="http://www.creative-tim.com" className="simple-text logo-normal">
-                    CINETIME
-                </a></div>
-                <div className="sidebar-wrapper">
-                    <ul className="nav">
-                        <li className="nav-item">
-                            <Link to={{ pathname: "/adminpage", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
-                                <i className="material-icons">home</i>
-                                <p>Home</p>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={{ pathname: "/movieupload", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
-                                <i className="material-icons">dashboard</i>
-                                <p>Movie Upload</p>
-                            </Link>
-                        </li>
-                        <li className="nav-item ">
-                            <Link to={{ pathname: "/adminbooking", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
-                                <i className="material-icons">content_paste</i>
-                                <p>Retrieve Bookings</p>
-                            </Link>
-                        </li>
-                        <li className="nav-item ">
-                            <Link to={{ pathname: "/adminprofile", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
-                                <i className="material-icons">person</i>
-                                <p>User Profile</p>
-                            </Link>
-                        </li>
-                        <li className="nav-item active">
-                            <Link to={{ pathname: "/retrievefeedback", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link" >
-                                <i className="material-icons">notifications</i>
-                                <p>Feedback</p>
-                            </Link>
-                        </li>
-                        <li className="nav-item ">
-                            <Link to="" className="nav-link" >
-                                <i className="material-icons">logout</i>
-                                <p>Logout</p>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div className="main-panel">
-                <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-                    <div class="container-fluid">
-                        <div class="navbar-wrapper">
-                        </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
-                        </button>
-
+        <>
+            <i id="menu" onClick={handleMenu} className="material-icons menu">menu</i>
+            <div className="wrapper ">
+                <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+                <div className="sidebar" id="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+                    <div className="logo simple-text logo-normal">
+                        <p>CINETIME</p>
+                        <div><i onClick={handleMenu} className="material-icons menu_nav">menu</i></div>
                     </div>
-                </nav>
-
-                <div>
-                    <h2 style={{ fontWeight: "bold", marginTop: "10%" }}>User Feedback</h2>
-                    {
-                        data.map((datas) => {
-                            return <div className="card" style={{ padding: "56px" }}>
-                                <p>Username : {datas.data.username}</p>
-                                <p>Email : {datas.data.email}</p>
-                                <p>Movie : {datas.data.moviename}</p>
-                                <p>Feedback : {datas.data.feedback}</p>
+                    <div className="sidebar-wrapper">
+                        <ul className="nav">
+                            <li className="nav-item">
+                                <Link to={{ pathname: "/adminpage", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
+                                    <i className="material-icons">home</i>
+                                    <p>Home</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={{ pathname: "/movieupload", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
+                                    <i className="material-icons">dashboard</i>
+                                    <p>Movie Upload</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item ">
+                                <Link to={{ pathname: "/adminbooking", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
+                                    <i className="material-icons">content_paste</i>
+                                    <p>Retrieve Bookings</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item ">
+                                <Link to={{ pathname: "/adminprofile", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link">
+                                    <i className="material-icons">person</i>
+                                    <p>User Profile</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item active">
+                                <Link to={{ pathname: "/retrievefeedback", state: { profile: profile, name: name, email: email, password: password, mobile: mobile } }} className="nav-link" >
+                                    <i className="material-icons">notifications</i>
+                                    <p>Feedback</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item ">
+                                <Link to="" className="nav-link" >
+                                    <i className="material-icons">logout</i>
+                                    <p>Logout</p>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="main-panel">
+                    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                        <div class="container-fluid">
+                            <div class="navbar-wrapper">
                             </div>
-                        })
-                    }
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="navbar-toggler-icon icon-bar"></span>
+                                <span class="navbar-toggler-icon icon-bar"></span>
+                                <span class="navbar-toggler-icon icon-bar"></span>
+                            </button>
+
+                        </div>
+                    </nav>
+
+                    <div>
+                        <h2 style={{ fontWeight: "bold", marginTop: "10%" }}>User Feedback</h2>
+                        {
+                            data.map((datas) => {
+                                return <div className="card" style={{ padding: "56px" }}>
+                                    <p className="feedback_p">Username : {datas.data.username}</p>
+                                    <p className="feedback_p">Email : {datas.data.email}</p>
+                                    <p className="feedback_p">Movie : {datas.data.moviename}</p>
+                                    <p className="feedback_p">Feedback : {datas.data.feedback}</p>
+                                </div>
+                            })
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
