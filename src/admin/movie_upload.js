@@ -4,7 +4,7 @@ import fire from '../files/firebase';
 import '../movie_details.css';
 
 export const Movieupload = () => {
-    const [image, setimage] = useState('');
+    let [image, setimage] = useState('');
     const [moviename, setmoviename] = useState('');
     const [ticketcost, setticketcost] = useState('')
     const [description, setdescription] = useState('');
@@ -22,31 +22,35 @@ export const Movieupload = () => {
     const mobile = location.state.mobile;
     const movieUpload = (e) => {
         e.preventDefault();
-        if (image === "" || video === "" || moviename === "" || description === "" || actorname === "" || directorname === "" || releasedate === "" || outdate === "") {
+        if (video === "" || moviename === "" || description === "" || actorname === "" || directorname === "" || releasedate === "" || outdate === "") {
             alert("please fill all fields");
         } else {
-            fire.firestore().collection("currentmovies").add({
-                image: image,
-                videourl: video,
-                moviename: moviename,
-                ticketcost: ticketcost,
-                description: description,
-                actorname: actorname,
-                directorname: directorname,
-                releasedate: releasedate,
-                outdate: outdate
-            }).then(() => {
-                alert("Movie Added Successfully");
-                setimage('');
-                setvideo('');
-                setmoviename('');
-                setticketcost('');
-                setdescription('');
-                setactorname('');
-                setdirectorname('');
-                setreleasedate('');
-                setoutdate('');
-            }).catch((err) => console.log(err))
+            fire.storage().ref("movie_images").child(moviename + ".jpg").getDownloadURL().then(url => {
+                fire.firestore().collection("currentmovies").add({
+                    image: url,
+                    videourl: video,
+                    moviename: moviename,
+                    ticketcost: ticketcost,
+                    description: description,
+                    actorname: actorname,
+                    directorname: directorname,
+                    releasedate: releasedate,
+                    outdate: outdate
+                }).then(() => {
+                    alert("Movie Added Successfully");
+                    setimage('');
+                    setvideo('');
+                    setmoviename('');
+                    setticketcost('');
+                    setdescription('');
+                    setactorname('');
+                    setdirectorname('');
+                    setreleasedate('');
+                    setoutdate('');
+                }).catch((err) => console.log(err))
+            });
+
+
         }
     }
     return (
@@ -116,7 +120,7 @@ export const Movieupload = () => {
                         <form className="upload-form" style={{ background: '#f6f5f7', marginLeft: "-50%", marginTop: "inherit" }}>
                             <h2 className="upload-font" style={{ fontWeight: "bold" }}>Upload Theater Movies</h2>
                             <br />
-                            <input type="text" placeholder="movie image url" value={image} onChange={(e) => setimage(e.target.value)} />
+                            {/* <input type="text" placeholder="movie image url" value={image} onChange={(e) => setimage(e.target.value)} /> */}
                             <input type="text" placeholder="movie video url" value={video} onChange={(e) => setvideo(e.target.value)} />
                             <input type="text" placeholder="Movie name" value={moviename} onChange={(e) => setmoviename(e.target.value)} />
                             <input type="text" placeholder="Ticket Cost" value={ticketcost} onChange={(e) => setticketcost(e.target.value)} />

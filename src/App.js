@@ -20,6 +20,7 @@ import { AdminBooking } from './admin/admin_booking';
 function App() {
 
 
+
   return (
     <div>
       <Router>
@@ -72,13 +73,13 @@ function App() {
           <Route exact path="/details">
             <MovieDetails />
           </Route>
-          
-         
+
+
           <Route exact path="/retrievefeedback">
             <Retrievefeedback />
           </Route>
-         
-          
+
+
         </Switch>
       </Router>
     </div>
