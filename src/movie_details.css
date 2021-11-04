@@ -20,16 +20,18 @@
   color: white;
   margin-bottom: 2rem;
 }
-
+.main_container {
+  margin-left:-8rem;
+  width: auto;
+}
 .wrapper {
   max-height: 100vh;
 }
 .menu {
 z-index:100;
-position:absolute;
+position:fixed;
 top:0;
 left:0;
-
 cursor: pointer;
 visibility: visible;
 
