@@ -1153,7 +1153,7 @@ pre code {
 }
 
 .col-4 {
-  flex: 0 0 33.333333%;
+  flex: 0 0 20%;
 }
 
 .col-5 {
@@ -15372,7 +15372,10 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   padding: 15px 0px;
   margin: 0;
   display: block;
-  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+position: relative;
   z-index: 4;
 }
 
@@ -15385,12 +15388,11 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   width: calc(100% - 30px);
   background-color: rgba(180, 180, 180, 0.3);
 }
-
 .sidebar .logo p {
   float: left;
   font-size: 20px;
   margin: 10px 10px;
-  color: #fff;
+  color: black;
   line-height: 20px;
 }
 
@@ -15572,7 +15574,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   margin-top: 70px;
   padding: 30px 15px;
   min-height: calc(100vh - 123px);
-margin-left:-17%;
+
 }
 
 .main-panel>.footer {
@@ -16986,7 +16988,7 @@ thead.thead-inverse th,
 }
 
 body {
-  background-color: #eee;
+  /* background: #1A1A1A; */
   color: #3C4858;
   font-weight: 300;
 background: #f6f5f7;
